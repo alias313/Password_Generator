@@ -1,19 +1,17 @@
 import random
-import string
+from string import ascii_letters, digits, punctuation
 
-def rand_str(n, mode):
+def rand_passwd(n, mode):
 	if 4 <= n <= 256 and 0 <= mode <= 2:
-
-		if mode == 0:
-			choice = string.ascii_letters
-		elif mode == 1:
-			choice = string.ascii_letters + string.digits
-		elif mode == 2:
-			choice = string.ascii_letters + string.digits + string.punctuation
+		choice = {
+			0: ascii_letters,
+			1: ascii_letters + digits,
+			2: ascii_letters + digits + punctuation
+		}.get(mode)
 		
-		return "".join([random.choice(choice) for n in range(n)])
+		return "".join([random.choice(choice) for x in range(n)])
 	else:
-		print("ERROR. PLEASE TRY AGAIN.")
+		print("ERROR. Input numbers in the correct range.")
 		import sys
 		sys.exit(1)
 
@@ -27,13 +25,10 @@ except ValueError:
 	import sys
 	sys.exit(1)
 
-string = rand_str(string_length, string_mode)
-
 print(f"""
-{"-"*(string_length + 25)}
+{"-"*(string_length + 23)}
 # Number of characters : {string_length}
 # Mode : {string_mode}
-# String : {string}
-{"-"*(string_length + 25)}
-"""
-)
+# String : {rand_passwd(string_length, string_mode)}
+{"-"*(string_length + 23)}
+""")
