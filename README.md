@@ -1,2 +1,2 @@
-# Password_Generator
-This repository will contain a program to generate different kinds of passwords.
+# Random_Generator
+This repository will contain programs relating to random generation of passwords, numbers, hashes, emails, domains...
